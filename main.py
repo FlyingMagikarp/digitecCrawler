@@ -68,11 +68,23 @@ def buildArticle(url):
     return Article(title, price, sale)
 
 
+products = []
 for p in productIDs:
     art = buildArticle(buildURL(p))
+    products.append(art)
     print('Article: ')
     print(art.title)
     print(art.price)
     print(art.sale[0])
     print(art.sale[1])
     print('####################')
+
+
+with open('out.txt', 'w') as f:
+    for p in products:
+        print('Article: ', file=f)
+        print(p.title, file=f)
+        print(p.price, file=f)
+        print(p.sale[0], file=f)
+        print(p.sale[1], file=f)
+        print('####################', file=f)
